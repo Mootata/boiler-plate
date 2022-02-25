@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const config = require("./config/key");
 const { User } = require("./models/User");
 
-// application/x-www-form-urlencoded
+// application/x-www-form-urlencoded를 파싱하기 위함
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // application/json
@@ -17,8 +17,9 @@ mongoose
   .then(() => console.log("MongoDB connected..!"))
   .catch((err) => console.log(err));
 
-app.get("/", (req, res) => res.send("Hellow World."));
+app.get("/", (req, res) => res.send("Hello !"));
 
+// 회원가입
 app.post("/register", (req, res) => {
   // 회원 가입시 필요한 정보들을 client에서 가져와 DB에 넣어줌
   const user = new User(req.body);
